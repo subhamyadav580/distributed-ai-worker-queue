@@ -7,11 +7,12 @@ settings = Settings()
 celery = Celery(
     "worker",
     broker=settings.rabbitmq_url,
-    backend="rpc://"
+    backend=None,
+    include=["tasks.summary_tasks"],
 )
 
-# celery.conf.task_routes = {
-#     "app.tasks.summary_tasks.*": {
-#         "queue": "summary_queue"
-#     }
-# }
+celery.conf.task_routes = {
+    "tasks.summary_tasks.*": {
+        "queue": "summary"
+    }
+}
