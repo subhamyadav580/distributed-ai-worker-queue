@@ -7,7 +7,7 @@ settings = Settings()
 celery = Celery(
     "worker",
     broker=settings.rabbitmq_url,
-    backend=None,
+    backend=settings.redis_url,
     include=["tasks.summary_tasks"],
 )
 

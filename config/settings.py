@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
 
     rabbitmq_url: str = "pyamqp://guest:guest@localhost:5672//"
+    redis_url: str = "redis://localhost:6379/0"
 
     model_config = SettingsConfigDict(
         env_file=".env",
